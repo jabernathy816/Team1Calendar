@@ -1,6 +1,8 @@
 # Django settings for paquetin project.
 import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 DEBUG = True
 
@@ -68,6 +70,20 @@ STATIC_ROOT = os.path.join(PROJECT_PATH, 'assets')
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = '/home'
+LOGOUT_REDIRECT_URL = '/logout'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'shadyoaksgolfcourse@gmail.com'
+EMAIL_HOST_PASSWORD = 'shady2018'
+EMAIL_USE_TLS = True
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -119,8 +135,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'debug_toolbar',
     'djangobower',
+    #'schedule',
+    'project_sample',
+    'main',
     'schedule',
-    'project_sample'
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
